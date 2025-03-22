@@ -1,4 +1,4 @@
-# Web Scraper de Mercado Libre con Python
+# Web Scraping utilizando Python
 
 Este proyecto extrae productos y guarda los datos en un archivo `.csv`.
 
@@ -10,8 +10,7 @@ Incluye los siguientes campos:
 - Descuento aplicado
 - Marca / Vendedor
 
-
-## 🎯 Objetivo
+## Objetivo
 
 Este proyecto fue creado **con fines de prácticar web scraping** utilizando Python. Su propósito es aprender a:
 
@@ -20,7 +19,7 @@ Este proyecto fue creado **con fines de prácticar web scraping** utilizando Pyt
 - Automatizar navegación paginada
 - Exportar resultados a CSV con `pandas`
 
-### ✅ Librerías necesarias
+### Librerías necesarias
 
 Instalá las dependencias necesarias con:
 
@@ -29,7 +28,7 @@ pip install pandas lxml curl_cffi
 ```
 Nota: curl_cffi permite simular un navegador como Chrome (evita bloqueos por scraping básico).
 
-## 🚀 ¿Cómo usarlo?
+## ¿Cómo usarlo?
 
 1. Cloná este proyecto o copiá los archivos a tu máquina:
 ```PowerShell
