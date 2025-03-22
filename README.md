@@ -33,7 +33,7 @@ Nota: curl_cffi permite simular un navegador como Chrome (evita bloqueos por scr
 
 1. Cloná este proyecto o copiá los archivos a tu máquina:
 ```PowerShell
-git clone https://github.com/faculb271/scraper-productos.git
+git clone https://github.com/faculb271/mlscraping.git
 ```
 2. Ejecutá el archivo main.py:
 ```PowerShell
