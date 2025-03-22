@@ -6,7 +6,7 @@ Incluye los siguientes campos:
 
 - Nombre del producto
 - Precio actual
-- Precio anterior (si está disponible)
+- Precio anterior
 - Descuento aplicado
 - Marca / Vendedor
 
@@ -51,7 +51,7 @@ Extrae con XPath los siguientes campos por producto:
 
 - Nombre del producto
 - Precio actual
-- Precio anterior (si está disponible)
+- Precio anterior
 - Descuento aplicado
 - Marca / Vendedor
 
