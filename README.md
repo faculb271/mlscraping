@@ -40,7 +40,7 @@ python main.py
 ```
 Al finalizar, vas a obtener un archivo productos.csv con todos los datos scrapeados.
 
-## ¿Qué hace el scraper?
+## ¿Qué hace el crawler?
 
 Recorre automáticamente las páginas ?page=1 hasta ?page=10.
 
