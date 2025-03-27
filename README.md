@@ -4,6 +4,16 @@
 ![Pandas](https://img.shields.io/badge/Pandas-1.3%2B-orange)
 ![lxml](https://img.shields.io/badge/lxml-4.6%2B-green)
 
+## Actualizacion
+La diferencia de este, con la version 1 de este Crawler es que, se agrego:
+1. Uso de la POO
+2. Creacion de Requirements.txt
+3. Uso de try y except
+4. Se agrego el `.xlsx`
+5. Se agregaron dos campos que incluye la URL de la imagen y la URL del producto. Tambien se cambio seller.
+
+---
+
 Este proyecto extrae productos y guarda los datos en un archivo `.csv` y `.xlsx`
 
 Incluye los siguientes campos:
@@ -63,11 +73,3 @@ Extrae con XPath los siguientes campos por producto:
 - URL del producto
 
 Guarda todos los resultados en un archivo CSV y Excel.
-
-## V2
-La diferencia de este, con la version 1 de este Crawler es que, se agrego:
-1. Uso de la POO
-2. Creacion de Requirements.txt
-3. Uso de try y except
-4. Se agrego el `.xlsx`
-5. Se agregaron dos campos que incluye la URL de la imagen y la URL del producto. Tambien se cambio seller.
