@@ -69,4 +69,3 @@ if __name__ == "__main__":
     base_url = "https://www.mercadolibre.com.ar/ofertas?container_id=MLA916439-1"
     crawler = Crawler(base_url, pages=10)
     crawler.run() 
-
