@@ -26,7 +26,7 @@ class Crawler:
                 name = product.xpath('.//a[@class="poly-component__title"]/text()')
                 current_price = product.xpath('.//div[@class="poly-price__current"]//span[@class="andes-money-amount__fraction"]/text()')
                 old_price = product.xpath('.//span[@class="andes-money-amount__fraction"]/text()')
-                seller = product.xpath('.//span[@class="poly-component__seller"]/text()')
+                seller = product.xpath('.//span[@class="poly-component__brand"]/text()')
                 discount = product.xpath('.//span[contains(@class, "andes-money-amount__discount")]/text()')
                 photo = product.xpath('.//img[contains(@class, "poly-component__picture")]/@data-src')
                 url = product.xpath('.//a[contains(@class, "poly-component__title")]/@href')
@@ -41,22 +41,22 @@ class Crawler:
                     'url': url[0] if url else None
                 })
             except Exception as e:
-                print(F"Hay un posible problema con los xpath")
+                print(F"Hay un posible problema con los xpath o con {e}")
 
     def _clean_data(self):
         """Limpieza los datos del DataFrame"""
         df = pd.DataFrame(self.data)
         df['price'] = df['price'].replace({',': '', '€': '', '$': ''}, regex=True).astype(float, errors='ignore')
         df['old_price'] = df['old_price'].replace({',': '', '€': '', '$': ''}, regex=True).astype(float, errors='ignore')
-        # df['discount'] = df['discount'].split("%")[0] Otra manera de hacer lo de abajo
         df['discount (%)'] = df['discount (%)'].str.replace('% OFF','',regex=False).astype(int,errors='ignore')
         
         return df
 
-    def save_data(self, filename='products.csv'):
+    def save_data(self, filename='productos.csv'):
         df = self._clean_data()
         df.to_csv(filename, index=False)
-        
+        excel_filename = filename.replace('.csv', '.xlsx')
+        df.to_excel(excel_filename, index=False)
 
     def run(self):
         """Método principal que ejecuta y guarda los datos"""
