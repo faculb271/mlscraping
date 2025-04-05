@@ -177,3 +177,4 @@ cython_debug/
 # Output
 productos.csv
 productos.xlsx
+log_example.py

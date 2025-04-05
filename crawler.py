@@ -1,12 +1,15 @@
 from curl_cffi import requests
 from lxml import html
 import pandas as pd
+import config
+import log
 
 class Crawler:
-    def __init__(self,base_url, pages = 10):
-        self.base_url = base_url
-        self.pages = pages
+    def __init__(self):
+        self.base_url = config.BASE_URL
+        self.pages = config.PAGES
         self.data = []
+        self.__log = log.Log().get_logger(config.LOG_FILE) #Asigno el nombre del log
 
     def get_products(self, page):
         """Obtiene el HTML de una pagina"""
@@ -15,9 +18,10 @@ class Crawler:
             response = requests.get(url,impersonate="chrome110")
             tree = html.fromstring(response.text)
             products = tree.xpath('//div[contains(@class, "andes-card") and contains(@class, "poly-card")]')
+            self.__log.info(f"pagina {page} obtenida exisotasamente")
             return products
         except Exception as e:
-            print(f"Esta fallando algo en {e}")
+            self.__log.error(f"Esta fallando algo con la pagina {page}")
 
     def extract_data(self, products):
         """Extrae los productos de dicha pagina"""
@@ -37,11 +41,13 @@ class Crawler:
                     'price': current_price[0] if current_price else None,
                     'old_price': old_price[0] if old_price else None,
                     'discount (%)': discount[0] if discount else None,
-                    'photo': photo if photo else None,
+                    'photo': photo[0] if photo else None,
                     'url': url[0] if url else None
                 })
+
+                self.__log.info(f"Extraccion exitosa")
             except Exception as e:
-                print(F"Hay un posible problema con los xpath o con {e}")
+                self.__log.error(F"Hay un posible problema con los xpath o con {e}")
 
     def _clean_data(self):
         """Limpieza los datos del DataFrame"""
@@ -64,8 +70,8 @@ class Crawler:
             products = self.get_products(page)
             self.extract_data(products)
         self.save_data()
-
+        self.__log.info(f"Crawler ejecutado")
+        
 if __name__ == "__main__":
-    base_url = "https://www.mercadolibre.com.ar/ofertas?container_id=MLA916439-1"
-    crawler = Crawler(base_url, pages=10)
-    crawler.run() 
+    crawler = Crawler() 
+    crawler.run()
