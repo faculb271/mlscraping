@@ -9,7 +9,7 @@ class Crawler:
         self.base_url = config.BASE_URL
         self.pages = config.PAGES
         self.data = []
-        self.__log = log.Log().get_logger(config.LOG_FILE) #Asigno el nombre del log
+        self.__log = log.Log().get_logger(config.LOG_FILE)
 
     def get_products(self, page):
         """Obtiene el HTML de una pagina"""
